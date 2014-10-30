@@ -15,16 +15,16 @@
  */
 package com.google.android.exoplayer;
 
-import com.google.android.exoplayer.drm.DrmSessionManager;
-import com.google.android.exoplayer.util.MimeTypes;
-import com.google.android.exoplayer.util.TraceUtil;
-
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCrypto;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.Surface;
+
+import com.google.android.exoplayer.drm.DrmSessionManager;
+import com.google.android.exoplayer.util.MimeTypes;
+import com.google.android.exoplayer.util.TraceUtil;
 
 import java.nio.ByteBuffer;
 
@@ -346,7 +346,7 @@ public class MediaCodecVideoTrackRenderer extends MediaCodecTrackRenderer {
     }
 
     long earlyUs = bufferInfo.presentationTimeUs - timeUs;
-    if (earlyUs < -30000) {
+    if (earlyUs < getDropTime()) {
       // We're more than 30ms late rendering the frame.
       dropOutputBuffer(codec, bufferIndex);
       return true;
@@ -376,6 +376,10 @@ public class MediaCodecVideoTrackRenderer extends MediaCodecTrackRenderer {
     // We're either not playing, or it's not time to render the frame yet.
     return false;
   }
+
+    protected long getDropTime() {
+        return -30000;
+    }
 
   private void skipOutputBuffer(MediaCodec codec, int bufferIndex) {
     TraceUtil.beginSection("skipVideoBuffer");

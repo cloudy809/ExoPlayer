@@ -56,7 +56,7 @@ import java.util.List;
   private static final int MSG_CUSTOM = 9;
 
   private static final int PREPARE_INTERVAL_MS = 10;
-  private static final int RENDERING_INTERVAL_MS = 10;
+  private static final int RENDERING_INTERVAL_MS = 0; //to increase seek speed
   private static final int IDLE_INTERVAL_MS = 1000;
 
   private final Handler handler;

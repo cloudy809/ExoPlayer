@@ -15,13 +15,13 @@
  */
 package com.google.android.exoplayer.upstream;
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.google.android.exoplayer.C;
 import com.google.android.exoplayer.util.Assertions;
 import com.google.android.exoplayer.util.Predicate;
 import com.google.android.exoplayer.util.Util;
-
-import android.text.TextUtils;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -376,9 +376,10 @@ public class HttpDataSource implements DataSource {
     connection.setReadTimeout(readTimeoutMillis);
     connection.setDoOutput(false);
     synchronized (requestProperties) {
-      for (HashMap.Entry<String, String> property : requestProperties.entrySet()) {
-        connection.setRequestProperty(property.getKey(), property.getValue());
-      }
+        //FIXME: NOT compiled by maven!
+      //for (HashMap.Entry<String, String> property : requestProperties.entrySet()) {
+        //connection.setRequestProperty(property.getKey(), property.getValue());
+      //}
     }
     connection.setRequestProperty("Accept-Encoding", "deflate");
     connection.setRequestProperty("User-Agent", userAgent);
