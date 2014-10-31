@@ -26,7 +26,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 /**
  * Concrete implementation of {@link ExoPlayer}.
  */
-/* package */ final class ExoPlayerImpl implements ExoPlayer {
+public class ExoPlayerImpl implements ExoPlayer {
 
   private static final String TAG = "ExoPlayerImpl";
 

@@ -5,7 +5,7 @@
     <groupId>com.google.android</groupId>
     <artifactId>exoplayer</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.13.2-SNAPSHOT</version>
+    <version>1.0.13.3</version>
     <name>custom-exoplayer</name>
     <description>custom exo-player android code</description>
 
