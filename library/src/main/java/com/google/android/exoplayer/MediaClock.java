@@ -72,6 +72,10 @@ public class MediaClock {
     return started ? elapsedRealtimeMinus(deltaUs) : timeUs;
   }
 
+    public boolean isStarted() {
+        return started;
+    }
+
   private long elapsedRealtimeMinus(long microSeconds) {
     return SystemClock.elapsedRealtime() * 1000 - microSeconds;
   }
