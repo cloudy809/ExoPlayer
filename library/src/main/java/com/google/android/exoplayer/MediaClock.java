@@ -22,7 +22,7 @@ import android.os.SystemClock;
  * its time can be set and retrieved. When started, this clock is based on
  * {@link SystemClock#elapsedRealtime()}.
  */
-/* package */ class MediaClock {
+public class MediaClock {
 
   private boolean started;
 
