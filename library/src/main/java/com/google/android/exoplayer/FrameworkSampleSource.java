@@ -15,13 +15,13 @@
  */
 package com.google.android.exoplayer;
 
-import com.google.android.exoplayer.util.Assertions;
-import com.google.android.exoplayer.util.Util;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.media.MediaExtractor;
 import android.net.Uri;
+
+import com.google.android.exoplayer.util.Assertions;
+import com.google.android.exoplayer.util.Util;
 
 import java.io.IOException;
 import java.util.Map;
@@ -187,7 +187,10 @@ public final class FrameworkSampleSource implements SampleSource {
   public long getBufferedPositionUs() {
     Assertions.checkState(prepared);
     long bufferedDurationUs = extractor.getCachedDuration();
-    if (bufferedDurationUs == -1) {
+      // bufferedDurationUs may be 0 on Galaxy S4 and in this case the player is always buffering after reaching the end and seeking to someplace
+      // Another possible fix is to pass minBufferMs < 500 to ExoPlayer constructor. It is not good to pass 0 because
+      // player will work slowly on slow connections without buffering. But if pass 500 we have a problem described above
+    if (bufferedDurationUs == -1 || bufferedDurationUs == 0) {
       return TrackRenderer.UNKNOWN_TIME_US;
     } else {
       return extractor.getSampleTime() + bufferedDurationUs;
