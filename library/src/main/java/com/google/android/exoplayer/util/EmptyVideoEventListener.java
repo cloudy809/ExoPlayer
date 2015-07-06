@@ -10,6 +10,21 @@ import com.google.android.exoplayer.MediaCodecVideoTrackRenderer;
  */
 public class EmptyVideoEventListener implements MediaCodecVideoTrackRenderer.EventListener {
     @Override
+    public void onDroppedFrames(int count, long elapsed) {
+
+    }
+
+    @Override
+    public void onVideoSizeChanged(int width, int height, float pixelWidthHeightRatio) {
+
+    }
+
+    @Override
+    public void onDrawnToSurface(Surface surface) {
+
+    }
+
+    @Override
     public void onDecoderInitializationError(MediaCodecTrackRenderer.DecoderInitializationException e) {
 
     }
@@ -20,17 +35,7 @@ public class EmptyVideoEventListener implements MediaCodecVideoTrackRenderer.Eve
     }
 
     @Override
-    public void onDroppedFrames(int count, long elapsed) {
-
-    }
-
-    @Override
-    public void onVideoSizeChanged(int width, int height) {
-
-    }
-
-    @Override
-    public void onDrawnToSurface(Surface surface) {
+    public void onDecoderInitialized(String decoderName, long elapsedRealtimeMs, long initializationDurationMs) {
 
     }
 }
